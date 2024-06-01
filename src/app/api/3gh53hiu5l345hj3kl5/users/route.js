@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 
-const users = { name: "Ali" };
+const users = [
+    { _id: "ali" },{ _id: "youssef" },{ _id: "osama" },{ _id: "said" },
+];
 
 export async function GET () {
     // return new Response('hello world');
