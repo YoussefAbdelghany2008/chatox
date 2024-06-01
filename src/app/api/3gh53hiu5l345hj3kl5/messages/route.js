@@ -1,25 +1,19 @@
 import { NextResponse } from "next/server";
+import dbConnect from "@/libs/dbConnect";
+import MessageModel from "@/libs/models/Message";
 
-const messages = [
-    {
-        _id: "1",
-        content: "Hello !!!",
-    },
-    {
-        _id: "2",
-        content: "HI !!!",
-    },
-    {
-        _id: "3",
-        content: "Bye !!!",
-    },
-];
+(async () => await dbConnect())()
 
 export async function GET () {
+    // await dbConnect();
+    const messages = await MessageModel.find();
     return  NextResponse.json(messages);
 }
 
 export async function POST (request) {
+    // await dbConnect();
     const message = await request.json();
+    const newMessage = new MessageModel(message);
+    await newMessage.save();
     return NextResponse.json(message);
 }
