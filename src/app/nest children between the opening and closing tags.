@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
           <link rel="icon" href="https://raw.githubusercontent.com/JoeAbdelghany/portfolioWebsite/main/public/assets/images/logo/favicon/favicon.ico" />
       </head>
       <body className={inter.className}>
-        <Layout children={children} />
+        <Layout>{children}</Layout>
       </body>
     </html>
   );
