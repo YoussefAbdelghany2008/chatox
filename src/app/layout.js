@@ -14,6 +14,7 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
+<<<<<<< HEAD
     return (
         <SessionWrapper>
             <html lang="en">
@@ -26,4 +27,18 @@ export default function RootLayout({ children }) {
             </html>
         </SessionWrapper>
     );
+=======
+  return (
+    <html lang="en">
+      <head>
+          <link rel="icon" href="https://raw.githubusercontent.com/JoeAbdelghany/portfolioWebsite/main/public/assets/images/logo/favicon/favicon.ico" />
+      </head>
+      <body className={inter.className}>
+        <Layout>
+            {children}
+        </Layout>
+      </body>
+    </html>
+  );
+>>>>>>> 135489031c3df116bc085576a1ba0a0013db31fa
 }
