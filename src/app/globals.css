@@ -21,5 +21,11 @@
   }
 
 input:focus + .typed {
-    color: rgb(59 130 246);
+    /* color: #3b82f6; */
+    color: #00aaff;
+}
+
+input:focus + .typedError {
+    /* color: #3b82f6; */
+    color: #972d0c;
 }

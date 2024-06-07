@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/libs/dbConnect";
 import UserModel from "@/libs/models/User";
+import axios from "axios";
 
 (async () => await dbConnect())()
 
@@ -10,9 +11,11 @@ export async function GET () {
 }
 
 export async function POST (request) {
-    const user = await request.json();
+    let user = await request.json();
     const newUser = new UserModel(user);
     await newUser.save();
+    let users = await (await axios.get(`${process.env.API_KEY}/users`)).data;
+    user = users.filter(u => u.userName == user.userName)[0];
     return NextResponse.json(user);
     
 }
