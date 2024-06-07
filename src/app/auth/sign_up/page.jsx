@@ -10,7 +10,7 @@ import Input from '@/components/signPage/input';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
-function signUp() {
+function SignUp() {
     const router = useRouter();
     const errMsg = useRef();
 
@@ -91,4 +91,4 @@ function signUp() {
     )
 }
 
-export default signUp;
+export default SignUp;
