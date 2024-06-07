@@ -14,7 +14,6 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
-<<<<<<< HEAD
     return (
         <SessionWrapper>
             <html lang="en">
@@ -27,7 +26,6 @@ export default function RootLayout({ children }) {
             </html>
         </SessionWrapper>
     );
-=======
   return (
     <html lang="en">
       <head>
@@ -40,5 +38,4 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
->>>>>>> 135489031c3df116bc085576a1ba0a0013db31fa
 }
