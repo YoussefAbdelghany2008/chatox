@@ -12,7 +12,7 @@ import Cookies from 'js-cookie';
 
 const API_KEY = `${process.env.API_KEY}/users`;
 
-function signIn() {
+function SignIn() {
     const router = useRouter();
     const [error, setError] = useState();
 
@@ -73,4 +73,4 @@ function signIn() {
     )
 }
 
-export default signIn;
+export default SignIn;
