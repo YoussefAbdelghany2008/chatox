@@ -5,7 +5,7 @@ function Input({children, placeholder, name , status, isPasswordFeild = false,au
     const [showPassword, setShowPassword] = useState(false);
     const [isTyped, setIsTyped] = useState(false);
     const [inputValue, setInputValue] = useState('');
-    const mainColor = status == "error"? "red-600" : status == "succes" ? "green-500" : "blue-500";
+    const mainColor = status == "error"? "red-600" : status == "succes" ? "green-500" : "green-500";
     const textColor = status == "error" ? "red-600" : status == "succes" ? "green-500" : "slate-500";
     return (
         <div className="grid gap-y-2" >
