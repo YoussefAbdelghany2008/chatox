@@ -9,7 +9,6 @@ import Input from '@/components/signPage/input';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
-import bcrypt from "bcryptjs";
 
 
 const API_KEY = `${process.env.API_KEY}/users`;
