@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import "./page.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from 'js-cookie';
 import { useRouter } from "next/navigation";
@@ -11,9 +11,11 @@ export default function Home() {
     const [user, setUser] = useState();
     const router = useRouter();
 
+    useEffect(() => {
         (async () => {
-            await axios.get(`${process.env.API_KEY}/users/${Cookies.get("user_id")}`).then(res => setUser(res.data))
+            await axios.get(`${process.env.API_KEY}/users/${Cookies.get("user_id")}`).then(async res => setUser(await res.data))
         })()
+    })
     if (user) {
         return (
             <>
@@ -32,5 +34,5 @@ export default function Home() {
                 </main>
             </>
         );
-    }else {return(<h1>Loading...</h1>)}
+    }
 }

@@ -1,29 +1,22 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Cookies from 'js-cookie';
+import Loading from "@/components/loading";
 
 export default function Layout({ children }) {
     const router = useRouter();
-    const [isRegistered, setIsRegistered] = useState(false);
-
-    const content = (
-        <>
-            {children}
-        </>
-    );
+    const pathname = usePathname().split("/")[1];
+    const [content, setContent] = useState(<Loading />);
 
     useEffect(() => {
-        const routes = window.location.pathname.split('/');
-        let userId = Cookies.get("user_id");
-        if (userId) {
-             routes[1] == ('auth') ? router.push("/") : setIsRegistered(true)
+        if (Cookies.get("user_id")) {
+             pathname == 'auth' ? router.push("/") : setContent(children)
         }else { 
-                routes[1] != ('auth') ? router.push("/auth/sign_in") : setIsRegistered(true)
+                pathname != 'auth' ? router.push("/auth/sign_in") : setContent(children)
         }
-    }, []);
-
-    if (isRegistered) { return content  } 
-
+    })
+    
+    return content
 }
