@@ -44,8 +44,10 @@ const nextConfig = {
           {
             protocol: 'https',
             hostname: 'platform-lookaside.fbsbx.com',
-            // port: '',
-            // pathname: '/account123/**',
+          },
+          {
+            protocol: 'https',
+            hostname: 'img.freepik.com',
           },
         ],
       },
