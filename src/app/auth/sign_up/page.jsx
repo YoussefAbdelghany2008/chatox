@@ -14,15 +14,17 @@ import Cookies from 'js-cookie';
 function SignUp() {
     const router = useRouter();
     const [error, setError] = useState();
-    const [isUserCreated, setIsUserCreated] = useState();
+    const [isUserCreated, setIsUserCreated] = useState(false);
 
     const validation = async (formData) => {
         const fName = formData.get("fName"),
         lName = formData.get("lName"),
         userName = formData.get("userName"),
         password = formData.get("password");
-        
-        await axios.post(`${process.env.API_KEY}/users`, {
+
+        if (!isUserCreated) {
+            setIsUserCreated(true);
+            await axios.post(`${process.env.API_KEY}/auth/sign_up`, {
             fName,
             lName,
             userName,
@@ -31,16 +33,15 @@ function SignUp() {
             email: ''
         }).then(({data}) => {
             if (data.status === 200) {
-                if (!isUserCreated) {
-                    setIsUserCreated(true);
                     Cookies.set('user_id', data.user._id);
                     router.push('/');
-                }
             }else {
+                setIsUserCreated(false);
                 setError(data.msg)
             }
         })
-    };
+    }
+};
 
     return (
         <SignPage>
@@ -60,9 +61,9 @@ function SignUp() {
                     <Input placeholder="User name" name="userName"><FaUserAlt /></Input>
                     <Input placeholder="Password" name="password" isPasswordFeild={true}><RiLockPasswordFill /></Input>
                 </div>
-                <button className=' bg-blue-500 text-white font-semibold py-2 px-4 rounded'>submit</button>
+                <button className=' bg-current text-white font-semibold py-2 px-4 rounded'>submit</button>
             </form>
-            <span className='w-full text-sm text-gray-500'>already registered? <Link href="/auth/sign_in" className="hover:underline text-blue-500 font-semibold">Sign in</Link></span>
+            <span className='w-full text-sm text-gray-500'>already registered? <Link href="/auth/sign_in" className="hover:underline text-current font-semibold">Sign in</Link></span>
         </SignPage>
     )
 }

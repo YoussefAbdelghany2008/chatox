@@ -7,7 +7,16 @@ module.exports = {
     extend: {
       borderRadius: {
         'lg': '1rem',
-      }
+      },
+      gridTemplateColumns: {
+        'layout': '4.5rem auto',
+      },
+      colors: {
+        transparent: 'transparent',
+        current: '#5b21b6',
+        'white': '#ffffff',
+        'black': '#0c0a09',
+      },
     },
   },
   plugins: [],

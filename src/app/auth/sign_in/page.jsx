@@ -10,9 +10,6 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 
-
-const API_KEY = `${process.env.API_KEY}/users`;
-
 function SignIn() {
     const router = useRouter();
     const [error, setError] = useState();
@@ -51,9 +48,9 @@ function SignIn() {
                     <Input name="userName" placeholder="User name" autoFocus={true}><FaUserAlt /></Input>
                     <Input name="password" placeholder="Password" isPasswordFeild={true}><RiLockPasswordFill /></Input>
                 </div>
-                <button type='submit' className='w-full bg-blue-500 text-white font-semibold py-2 px-4 border border-blue-500 rounded'>submit</button>
+                <button type='submit' className='w-full bg-current text-white font-semibold py-2 px-4 border border-current rounded'>submit</button>
             </form>
-            <span className='text-sm text-gray-500'>Not registered? <Link href="/auth/sign_up" className="hover:underline text-blue-500 font-semibold">Sign up</Link></span>
+            <span className='text-sm text-gray-500'>Not registered? <Link href="/auth/sign_up" className="hover:underline text-current font-semibold">Sign up</Link></span>
         </SignPage>
     )
 }

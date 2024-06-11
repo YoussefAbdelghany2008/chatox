@@ -22,15 +22,13 @@ export default function Verification() {
                             axios.post(USERS_API, {
                                 fName: user.name.split(' ')[0],
                                 lName: user.name.split(' ')[1],
-                                userName: '',
-                                password: '',
+                                // userName: '',
+                                // password: '',
                                 avatar: user.image,
-                                email: user.email, // email: user.email ? user.email: '',
-                            }).then(async () => {
-                                axios.get(USERS_API).then(async ({ data: users }) => {
-                                    Cookies.set("userId", await users.filter(u => u.email == user.email)[0]._id);
-                                    router.push("/")
-                                })
+                                email: user.email,
+                            }).then(({data: user}) => {
+                                Cookies.set("userId", user._id);
+                                router.push("/")
                             })
 
                         } else {

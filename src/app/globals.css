@@ -19,13 +19,3 @@
     75% { transform: rotate(-4deg); }
     100% { transform: rotate(0deg); }
   }
-
-input:focus + .typed {
-    /* color: #3b82f6; */
-    color: #00aaff;
-}
-
-input:focus + .typedError {
-    /* color: #3b82f6; */
-    color: #972d0c;
-}
