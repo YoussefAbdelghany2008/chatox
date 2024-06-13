@@ -11,7 +11,7 @@ export default function Home() {
                 { isLoading === true && <main className="center"><h1>Loading 😴😴😴</h1></main>}
                 <h1>chat</h1>
                 {status === "succeed" && messages.map( msg => (
-                    <h1>{msg.content}</h1>
+                    <h1 key={msg._id}>{msg.content}</h1>
                 ))}
               	{status === 'failed' && <p>{error}</p>}
             </main>
