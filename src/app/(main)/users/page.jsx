@@ -35,7 +35,7 @@ const Home = () => {
 		<h1 className="rounded bg-current text-white px-4 py-2" onClick={createUserHandler}>create a new user</h1>
 		{isLoading && <main className='h-screen center'><h1>Loading... 😍😍😍</h1></main>}
 		{status === 'succeed' && users.map((user) => (
-			<li>{user.fName + ' ' + user.lName}</li>
+			<li  key={user._id} >{user.fName + ' ' + user.lName}</li>
 		))}
       	{status === 'failed' && <p>{error}</p>}
       </div>
