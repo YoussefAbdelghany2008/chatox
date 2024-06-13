@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from 'react'
-import SignPage from '@/components/signPage'
 import Link from 'next/link';
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
@@ -28,9 +27,7 @@ function SignUp() {
             fName,
             lName,
             userName,
-            password,
-            avatar: '/user.png',
-            email: ''
+            password
         }).then(({data}) => {
             if (data.status === 200) {
                     Cookies.set('user_id', data.user._id);
@@ -44,7 +41,7 @@ function SignUp() {
 };
 
     return (
-        <SignPage>
+        <>
             <h1 className='center font-extrabold'>sign In</h1>
             { error ? ( 
                 <div className="bg-red-100 border flex items-center border-red-400 text-red-700 px-4 py-2 rounded relative" role="alert">
@@ -64,7 +61,7 @@ function SignUp() {
                 <button className=' bg-current text-white font-semibold py-2 px-4 rounded'>submit</button>
             </form>
             <span className='w-full text-sm text-gray-500'>already registered? <Link href="/auth/sign_in" className="hover:underline text-current font-semibold">Sign in</Link></span>
-        </SignPage>
+        </>
     )
 }
 

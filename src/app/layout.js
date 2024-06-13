@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import Layout from "@/components/layout";
 import SessionWrapper from '@/components/providers';
+import Layout from "@/components/layout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -15,16 +15,17 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
     return (
-        <SessionWrapper>
-            <html lang="en">
-                <head>
-                    <link rel="icon" href="https://raw.githubusercontent.com/JoeAbdelghany/portfolioWebsite/main/public/assets/images/logo/favicon/favicon.ico" />
-                </head>
-                <body className={inter.className}>
-                    {/* <Layout>{children}</Layout> */}
-                    {children}
-                </body>
-            </html>
-        </SessionWrapper>
+            <SessionWrapper>
+                <html lang="en">
+                    <head>
+                        <link rel="icon" href="https://raw.githubusercontent.com/JoeAbdelghany/portfolioWebsite/main/public/assets/images/logo/favicon/favicon.ico" />
+                    </head>
+                    <body className={inter.className}>
+                        <Layout>
+                            {children}
+                        </Layout>
+                    </body>
+                </html>
+            </SessionWrapper>
     );
 }

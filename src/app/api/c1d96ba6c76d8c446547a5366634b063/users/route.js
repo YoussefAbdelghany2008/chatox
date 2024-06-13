@@ -17,9 +17,9 @@ export async function POST (req) {
     const newUser = new UserModel(user);
     await newUser.save();
     let users = await (await axios.get(`${process.env.API_KEY}/users`)).data;
-    if (!user.email) {
+    if (user.userName) {
         user = users.filter(u => u.userName == user.userName)[0];
-    }else {
+    }else if (user.email) {
         user = users.filter(u => u.email == user.email)[0];
     }
     return NextResponse.json(user)

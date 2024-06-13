@@ -9,7 +9,7 @@ module.exports = {
         'lg': '1rem',
       },
       gridTemplateColumns: {
-        'layout': '4.5rem auto',
+        'layout': '4rem auto',
       },
       colors: {
         transparent: 'transparent',
@@ -17,6 +17,9 @@ module.exports = {
         'white': '#ffffff',
         'black': '#0c0a09',
       },
+      spacing: {
+        'header': '4rem',
+      }
     },
   },
   plugins: [],

@@ -1,49 +1,28 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchUsers } from "@/libs/features/users/usersSlice";
+import { fetchMessages } from "@/libs/features/messages/messageSlice";
+import { useEffect } from "react";
 
-export default function Layout({ children }) {
+import { Provider } from 'react-redux';
+import { store } from "@/libs/store";
+
+const UseRedux = ({children}) => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchUsers());
+        dispatch(fetchMessages());
+    }, [dispatch]);
+
+    return children;
+};
+
+
+export default function RootLayout({ children }) {
     return (
-        <main className="grid grid-cols-layout min-h-screen">
-            <nav className="bg-white shadow-lg shadow-slate-200 border border-l-slate-200 rounded-r-sm h-screen"> {/* do not forgot fixed */}
-
-            </nav>
-            { children }
-        </main> 
-    )
+        <Provider store={store}>
+            <UseRedux>{children}</UseRedux>
+        </Provider>
+    );
 }
-
-
-
-
-
-// import { useRouter, usePathname } from "next/navigation";
-// import Cookies from 'js-cookie';
-// import Loading from "@/components/loading";
-
-// const layout = (children) => {
-    // return (
-    //     <main className="grid grid-cols-layout min-h-screen">
-    //         <nav className="bg-white shadow-lg shadow-slate-200 border border-l-slate-200 rounded-r-sm h-screen"> {/* do not forgot fixed */}
-
-    //         </nav>
-    //         { children }
-    //     </main> 
-    // )
-// };
-
-// export default function Layout({ children }) {
-//     const router = useRouter();
-//     const pathname = usePathname().split("/")[1];
-//     const [content, setContent] = useState(<Loading />);
-
-//     useEffect(() => {
-//         if (Cookies.get("user_id")) {
-//              pathname.startsWith('/auth') ? router.push("/") : setContent(layout(children))
-//         }else { 
-//                 !pathname.startsWith('/auth') ? router.push("/auth/sign_in") : setContent(children)
-//         }
-//     }, []);
-    
-//     return content
-// }

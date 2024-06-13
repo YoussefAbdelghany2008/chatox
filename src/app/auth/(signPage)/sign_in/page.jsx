@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from 'react'
-import SignPage from '@/components/signPage'
 import Link from 'next/link';
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
@@ -33,7 +32,7 @@ function SignIn() {
     }
 
     return (
-        <SignPage>
+        <>
             <form action={validation} className='grid gap-y-2'>
                 <h1 className='center font-extrabold'>sign In</h1>
                 { error ? ( 
@@ -51,7 +50,7 @@ function SignIn() {
                 <button type='submit' className='w-full bg-current text-white font-semibold py-2 px-4 border border-current rounded'>submit</button>
             </form>
             <span className='text-sm text-gray-500'>Not registered? <Link href="/auth/sign_up" className="hover:underline text-current font-semibold">Sign up</Link></span>
-        </SignPage>
+        </>
     )
 }
 

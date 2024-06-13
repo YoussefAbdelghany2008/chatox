@@ -35,7 +35,7 @@ const validateData = (value, length, patterns, name) => {
 
 export async function POST (req) {
     let user = await req.json();
-    let { fName, lName, userName, password, avatar, email } = user;
+    let { fName, lName, userName, password } = user;
     userName = userName.trim();
     let data; 
     const patterns = {
