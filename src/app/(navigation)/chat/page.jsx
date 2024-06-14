@@ -14,7 +14,7 @@ export default function Home() {
                 <br />
                 <br />
                 {status === "succeed" && messages.map( msg => (
-                    <h1>{msg.content}</h1>
+                    <h1 key={msg._id}>{msg.content}</h1>
                 ))}
               	{status === 'failed' && <p>{error}</p>}
             </main>
