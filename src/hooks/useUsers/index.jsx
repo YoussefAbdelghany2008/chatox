@@ -1,18 +1,11 @@
-"use client"
+import { useSelector } from "react-redux";
 
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { createUser } from "@/libs/features/users/usersSlice";
+const useUsers = () => {
 
-const useUsers = (method = "GET") => {
-    const dispatch = useDispatch();
-    const { isLoading, users } = useSelector(state => state);
-
-    useEffect(() => {
-        dispatch();
-    }, [dispatch]);
+    const { isLoading, users } = useSelector(state => state.users);
 
     return { isLoading, users };
+
 };
 
 export default useUsers;

@@ -6,13 +6,14 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import Input from '@/components/signPage/input';
-import Spinner from "@/components/loading/spinner";
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 
 function SignUp() {
+    const router = useRouter();
     const [error, setError] = useState();
     const [isUserCreated, setIsUserCreated] = useState(false);
-    const [ showLoading, setShowLoading ] = useState(false);
-
 
     const validation = async (formData) => {
         const fName = formData.get("fName"),
@@ -22,8 +23,21 @@ function SignUp() {
 
         if (!isUserCreated) {
             setIsUserCreated(true);
-            setShowLoading(true);
-        }
+            await axios.post(`${process.env.API_KEY}/auth/sign_up`, {
+            fName,
+            lName,
+            userName,
+            password
+        }).then(({data}) => {
+            if (data.status === 200) {
+                    Cookies.set('user_id', data.user._id);
+                    router.push('/');
+            }else {
+                setIsUserCreated(false);
+                setError(data.msg)
+            }
+        })
+    }
 };
 
     return (
@@ -44,10 +58,7 @@ function SignUp() {
                     <Input placeholder="User name" name="userName"><FaUserAlt /></Input>
                     <Input placeholder="Password" name="password" isPasswordFeild={true}><RiLockPasswordFill /></Input>
                 </div>
-                <button className=' center bg-current text-white font-semibold py-2 px-4 rounded'>
-                    { showLoading ? <Spinner /> : ''}  
-                    submit
-                </button>
+                <button className=' bg-current text-white font-semibold py-2 px-4 rounded'>submit</button>
             </form>
             <span className='w-full text-sm text-gray-500'>already registered? <Link href="/auth/sign_in" className="hover:underline text-current font-semibold">Sign in</Link></span>
         </>

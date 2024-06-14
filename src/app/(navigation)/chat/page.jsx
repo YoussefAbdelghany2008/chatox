@@ -10,6 +10,9 @@ export default function Home() {
             <main className="center h-screen">
                 { isLoading === true && <main className="center"><h1>Loading 😴😴😴</h1></main>}
                 <h1>chat</h1>
+                <br />
+                <br />
+                <br />
                 {status === "succeed" && messages.map( msg => (
                     <h1>{msg.content}</h1>
                 ))}

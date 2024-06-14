@@ -5,6 +5,8 @@ import { fetchUsers } from "@/libs/features/users/usersSlice";
 import { fetchMessages } from "@/libs/features/messages/messageSlice";
 import { useEffect } from "react";
 
+import { SessionProvider } from "next-auth/react";
+
 import { Provider } from 'react-redux';
 import { store } from "@/libs/store";
 
@@ -22,7 +24,9 @@ const UseRedux = ({children}) => {
 export default function RootLayout({ children }) {
     return (
         <Provider store={store}>
-            <UseRedux>{children}</UseRedux>
+            {/* <SessionProvider> */}
+                <UseRedux>{children}</UseRedux>
+            {/* </SessionProvider> */}
         </Provider>
     );
 }

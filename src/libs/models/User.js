@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     password: {type: String, required: false, trim: true},
     fName: {type: String, required: true, trim: true},
     lName: {type: String, required: true, trim: true},
-    avatar: {type: String, required: true, default: "/user.png",},
+    avatar: {type: String, required: true, default: "user.png",},
     email: {type: String, required: false, unique: true, sparse: true },
 }, { versionKey: false });
 
